@@ -24,7 +24,7 @@ namespace Tests
         [InlineData(100, "C")]
         [InlineData(500, "D")]
         [InlineData(1000, "M")]
-        public void Digit_To_Numeral_Equals_ExpectedValue(int digit, string numeral)
+        public void Numeral_To_Digit_Equals_ExpectedValue(int digit, string numeral)
         {
             // ARRANGE
             var thing = new RomanNumeralConverter();
@@ -47,7 +47,7 @@ namespace Tests
         [InlineData(100, "C")]
         [InlineData(500, "D")]
         [InlineData(1000, "M")]
-        public void Numeral_To_Digit_Equals_ExpectedValue(int digit, string numeral)
+        public void Digit_To_Numeral_Equals_ExpectedValue(int digit, string numeral)
         {
             // ARRANGE
             var thing = new RomanNumeralConverter();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Core
@@ -21,7 +22,17 @@ namespace Core
         }
 
         public string FromDigit(int digit)
-            => GetNumeral(digit);
+        {
+            decimal decimalDigit = (decimal)digit; // Hack to allo division without compiler warning
+
+            // How many of each major grouping?
+            int thousands = (int)(Math.Floor(decimalDigit / 1000) % 10);
+            int hundreds = (int)(Math.Floor(decimalDigit / 100) % 10);
+            int tens = (int)(Math.Floor(decimalDigit / 10) % 10);
+            int ones = digit % 10;
+
+            return $"{new String(GetNumeral(1000)[0], thousands)}{new String(GetNumeral(100)[0], hundreds)}{new String(GetNumeral(10)[0], tens)}{new String(GetNumeral(1)[0], ones)}";
+        }
 
         private string GetNumeral(int digit)
         {
