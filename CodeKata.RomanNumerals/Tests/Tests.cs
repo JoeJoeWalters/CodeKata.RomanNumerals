@@ -50,6 +50,8 @@ namespace Tests
         [InlineData(1500, "MD")]
         [InlineData(1501, "MDI")]
         [InlineData(1504, "MDIV")]
+        [InlineData(1984, "MCMLXXXIV")]
+        [InlineData(2021, "MMXXI")]
         public void Digit_To_Numeral_Equals_ExpectedValue(int digit, string numeral)
         {
             // ARRANGE
