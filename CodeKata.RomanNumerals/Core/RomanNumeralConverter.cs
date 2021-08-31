@@ -34,14 +34,6 @@ namespace Core
             return $"{new String('M', thousands)}{NumeralCast(hundreds, 'C', 'D', 'M')}{NumeralCast(tens, 'X', 'L', 'C')}{NumeralCast(ones, 'I', 'V', 'X')}";
         }
 
-        private string GetNumeral(int digit)
-        {
-            if (numerals.ContainsValue(digit))
-                return numerals.Where(x => x.Value == digit).Select(x => x.Key).FirstOrDefault().ToString();
-            else
-                return string.Empty;
-        }
-
         private String NumeralCast(int amount, char small, char mid, char large)
         {
             switch (amount)
