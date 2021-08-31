@@ -6,32 +6,34 @@ namespace Tests
 {
     public class Tests
     {
-        [Fact]
-        public void Something_Does_Something_With_Thing_Expecting_SomethingElse()
+        private readonly RomanNumeralConverter converter;
+
+        public Tests()
         {
-            // ARRANGE
-            var thing = new Thing();
-
-            // ACT
-
-            // ASSERT
-            thing.Should().NotBeNull();
+            converter = new RomanNumeralConverter();
         }
 
         [Theory]
-        [InlineData("Scenario 1")]
-        [InlineData("Scenario 2")]
-        [InlineData("Scenario 3")]
-        [InlineData("Scenario 4")]
-        public void Something_Does_SomethingSpecific_With_Thing_Expecting_SomethingElse(string scenario)
+        [InlineData(1, "I")]
+        [InlineData(2, "II")]
+        [InlineData(3, "III")]
+        [InlineData(4, "IV")]
+        [InlineData(5, "V")]
+        [InlineData(10, "X")]
+        [InlineData(50, "L")]
+        [InlineData(100, "C")]
+        [InlineData(500, "D")]
+        [InlineData(1000, "M")]
+        public void Value_To_Numeral_Equals_ExpectedValue(int digit, string numeral)
         {
             // ARRANGE
-            var thing = new Thing();
+            var thing = new RomanNumeralConverter();
 
             // ACT
+            string result = converter.FromDigit(digit);
 
             // ASSERT
-            thing.Should().NotBe(scenario);
+            result.Should().Be(numeral);
         }
     }
 }
